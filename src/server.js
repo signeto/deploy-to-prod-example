@@ -2,6 +2,7 @@
 import { createServer } from "node:http";
 import { readFileSync } from "node:fs";
 
+const startedAt = new Date().toISOString();
 const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
 
 export function health() {
@@ -10,6 +11,7 @@ export function health() {
     service: pkg.name,
     version: pkg.version,
     commit: process.env.GIT_SHA ?? "dev",
+    started_at: startedAt,
     uptime_seconds: Math.round(process.uptime()),
     region: process.env.REGION ?? "local",
   };

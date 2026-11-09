@@ -18,3 +18,7 @@ test("health reports uptime in whole seconds", () => {
 test("health reports the region, local by default", () => {
   assert.equal(health().region, process.env.REGION ?? "local");
 });
+
+test("health reports when the service started", () => {
+  assert.ok(!Number.isNaN(Date.parse(health().started_at)));
+});
