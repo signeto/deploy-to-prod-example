@@ -22,3 +22,7 @@ test("health reports the region, local by default", () => {
 test("health reports when the service started", () => {
   assert.ok(!Number.isNaN(Date.parse(health().started_at)));
 });
+
+test("health reports the Node.js version", () => {
+  assert.equal(health().node, process.version);
+});

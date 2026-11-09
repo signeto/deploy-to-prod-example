@@ -13,6 +13,7 @@ export function health() {
     commit: process.env.GIT_SHA ?? "dev",
     started_at: startedAt,
     uptime_seconds: Math.round(process.uptime()),
+    node: process.version,
     region: process.env.REGION ?? "local",
   };
 }
