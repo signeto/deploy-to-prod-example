@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { health } from "../src/server.js";
+import { health, handle } from "../src/server.js";
 
 test("health reports the service and version", () => {
   const h = health();
@@ -25,4 +25,11 @@ test("health reports when the service started", () => {
 
 test("health reports the Node.js version", () => {
   assert.equal(health().node, process.version);
+});
+
+test("GET /version returns the package version", () => {
+  let body = "";
+  const res = { writeHead() {}, end(b) { body = b; } };
+  handle({ method: "GET", url: "/version" }, res);
+  assert.match(body, /^\d+\.\d+\.\d+\n$/);
 });

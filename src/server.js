@@ -19,6 +19,11 @@ export function health() {
 }
 
 export function handle(req, res) {
+  if (req.method === "GET" && req.url === "/version") {
+    res.writeHead(200, { "content-type": "text/plain" });
+    res.end(`${pkg.version}\n`);
+    return;
+  }
   if (req.method === "GET" && req.url === "/health") {
     res.writeHead(200, { "content-type": "application/json" });
     res.end(JSON.stringify(health()));
