@@ -14,3 +14,7 @@ test("health reports uptime in whole seconds", () => {
   assert.ok(Number.isInteger(h.uptime_seconds));
   assert.ok(h.uptime_seconds >= 0);
 });
+
+test("health reports the region, local by default", () => {
+  assert.equal(health().region, process.env.REGION ?? "local");
+});
