@@ -10,6 +10,7 @@ export function health() {
     service: pkg.name,
     version: pkg.version,
     commit: process.env.GIT_SHA ?? "dev",
+    uptime_seconds: Math.round(process.uptime()),
   };
 }
 

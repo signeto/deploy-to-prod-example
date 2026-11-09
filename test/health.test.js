@@ -8,3 +8,9 @@ test("health reports the service and version", () => {
   assert.equal(h.service, "deploy-to-prod-example");
   assert.match(h.version, /^\d+\.\d+\.\d+$/);
 });
+
+test("health reports uptime in whole seconds", () => {
+  const h = health();
+  assert.ok(Number.isInteger(h.uptime_seconds));
+  assert.ok(h.uptime_seconds >= 0);
+});
