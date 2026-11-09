@@ -1,0 +1,33 @@
+# The production deploy. Signeto's starter policy sends every run of this workflow on main to your phone:
+# the agent asks, you see the exact commit, and only a signed approval lets the gateway start it.
+# The deploy itself is simulated: this example has no real servers.
+name: deploy
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency: { group: production, cancel-in-progress: false }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm test
+      - name: Deploy to production (simulated)
+        run: |
+          version=$(node -p "require('./package.json').version")
+          echo "Deploying deploy-to-prod-example $version at $GITHUB_SHA to production"
+          {
+            echo "### Deployed to production"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Version | $version |"
+            echo "| Commit | \`$GITHUB_SHA\` |"
+            echo "| Started by | $GITHUB_ACTOR |"
+            echo ""
+            echo "Simulated deploy: nothing left GitHub. A real pipeline would ship here."
+          } >> "$GITHUB_STEP_SUMMARY"

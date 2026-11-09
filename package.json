@@ -1,0 +1,13 @@
+{
+  "name": "deploy-to-prod-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Signeto example: an AI agent merges and deploys only after you approve on your phone.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,29 @@
+// A tiny status service: the app this example deploys. GET /health reports what is running.
+import { createServer } from "node:http";
+import { readFileSync } from "node:fs";
+
+const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+
+export function health() {
+  return {
+    status: "ok",
+    service: pkg.name,
+    version: pkg.version,
+    commit: process.env.GIT_SHA ?? "dev",
+  };
+}
+
+export function handle(req, res) {
+  if (req.method === "GET" && req.url === "/health") {
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(JSON.stringify(health()));
+    return;
+  }
+  res.writeHead(404, { "content-type": "text/plain" });
+  res.end("not found\n");
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const port = Number(process.env.PORT ?? 3000);
+  createServer(handle).listen(port, () => console.log(`listening on http://localhost:${port}/health`));
+}
