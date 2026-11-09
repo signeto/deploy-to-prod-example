@@ -33,3 +33,11 @@ test("GET /version returns the package version", () => {
   handle({ method: "GET", url: "/version" }, res);
   assert.match(body, /^\d+\.\d+\.\d+\n$/);
 });
+
+test("non-GET requests get 405 with an Allow header", () => {
+  let status = 0, headers = {};
+  const res = { writeHead(c, h) { status = c; headers = h; }, end() {} };
+  handle({ method: "POST", url: "/health" }, res);
+  assert.equal(status, 405);
+  assert.equal(headers.allow, "GET");
+});

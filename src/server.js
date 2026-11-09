@@ -19,6 +19,11 @@ export function health() {
 }
 
 export function handle(req, res) {
+  if (req.method !== "GET") {
+    res.writeHead(405, { "content-type": "text/plain", allow: "GET" });
+    res.end("method not allowed\n");
+    return;
+  }
   if (req.method === "GET" && req.url === "/version") {
     res.writeHead(200, { "content-type": "text/plain" });
     res.end(`${pkg.version}\n`);
