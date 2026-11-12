@@ -30,7 +30,7 @@ Claude Code ──► Signeto gateway (on your computer) ──► your iPhone
 
 ## Try it
 
-You need a Mac or Linux machine with Node.js 22.13+, an iPhone with the Signeto app, the GitHub CLI (`gh`) and Claude Code. The [Quickstart](https://signeto.dev/docs/quickstart/) has the details.
+You need a Mac or Linux machine with Node.js 22.13+, an iPhone with the Signeto app, the GitHub CLI (`gh`) and Claude Code. The [install guides](https://signeto.dev/docs/install/) have the details.
 
 1. **Fork this repository** (it must stay public, or be on a paid GitHub plan, for the ruleset to be enforced), then clone your fork:
    ```sh
