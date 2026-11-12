@@ -14,6 +14,7 @@ export function health() {
     started_at: startedAt,
     uptime_seconds: Math.round(process.uptime()),
     node: process.version,
+    memory_mb: Math.round(process.memoryUsage().rss / 1048576),
     region: process.env.REGION ?? "local",
   };
 }
