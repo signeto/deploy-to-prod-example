@@ -27,6 +27,10 @@ test("health reports the Node.js version", () => {
   assert.equal(health().node, process.version);
 });
 
+test("health reports memory use in whole megabytes", () => {
+  assert.ok(Number.isInteger(health().memory_mb));
+});
+
 test("GET /version returns the package version", () => {
   let body = "";
   const res = { writeHead() {}, end(b) { body = b; } };
