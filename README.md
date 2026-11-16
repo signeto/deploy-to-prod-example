@@ -93,3 +93,4 @@ Anything the policy doesn't recognise asks for approval. See [Policies](https://
 Apache-2.0. Signeto is made by Diretek Solutions, LLC.
 
 Merged through a Signeto Cloud gateway after a move from a self-hosted one (SIG-166 end-to-end test, 2026-11-15).
+Merged through a Signeto Cloud gateway the provisioner created on its own (SIG-174 end-to-end test, 2026-11-15).
