@@ -98,3 +98,4 @@ Merged after a move whose handoff needed no manual nudge (socket fix, SIG-174, 2
 Merged through a Signeto Cloud gateway set up in the browser alone (SIG-163, 2026-11-16).
 Test change from a Claude Code session (2026-11-16).
 Test change from a Claude Code session (2026-11-17).
+Another test change from a Claude Code session (2026-11-17).
