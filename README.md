@@ -96,3 +96,4 @@ Merged through a Signeto Cloud gateway after a move from a self-hosted one (SIG-
 Merged through a Signeto Cloud gateway the provisioner created on its own (SIG-174 end-to-end test, 2026-11-15).
 Merged after a move whose handoff needed no manual nudge (socket fix, SIG-174, 2026-11-15).
 Merged through a Signeto Cloud gateway set up in the browser alone (SIG-163, 2026-11-16).
+Test change from a Claude Code session (2026-11-16).
